@@ -155,9 +155,15 @@
         <h3>IV. Aceptación</h3>
         <p style="font-size:0.8em; color:#666;">Al firmar, asumo la responsabilidad del tratamiento y libero a O Studio de daños por no seguir indicaciones.</p>
         
-        <div class="signature-box">
-            [Espacio para firmar con Apple Pencil o Dedo]
-        </div>
+        <canvas id="firma"
+        width="300"
+        height="150"
+        style="border:1px solid #000; touch-action:none;">
+</canvas>
+
+<br><br>
+
+<button onclick="limpiarFirma()">Limpiar firma</button>
     </div>
 
     <button onclick="window.print()">GENERAR PDF PARA FIRMAR</button>
@@ -168,5 +174,49 @@
     document.getElementById('dateToday').valueAsDate = new Date();
 </script>
 
+<script>
+const canvas = document.getElementById('firma');
+const ctx = canvas.getContext('2d');
+
+ctx.lineWidth = 2;
+ctx.lineCap = 'round';
+ctx.strokeStyle = '#000';
+
+let dibujando = false;
+
+function getPos(e) {
+  const rect = canvas.getBoundingClientRect();
+  return {
+    x: e.clientX - rect.left,
+    y: e.clientY - rect.top
+  };
+}
+
+canvas.addEventListener('pointerdown', e => {
+  e.preventDefault();
+  dibujando = true;
+  const pos = getPos(e);
+  ctx.beginPath();
+  ctx.moveTo(pos.x, pos.y);
+});
+
+canvas.addEventListener('pointermove', e => {
+  if (!dibujando) return;
+  e.preventDefault();
+  const pos = getPos(e);
+  ctx.lineTo(pos.x, pos.y);
+  ctx.stroke();
+});
+
+canvas.addEventListener('pointerup', () => dibujando = false);
+canvas.addEventListener('pointerleave', () => dibujando = false);
+canvas.addEventListener('pointercancel', () => dibujando = false);
+
+function limpiarFirma() {
+  ctx.clearRect(0, 0, canvas.width, canvas.height);
+}
+</script>
+
 </body>
+
 </html>
