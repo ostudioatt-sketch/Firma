@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Consentimiento O Studio</title>
+
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&display=swap" rel="stylesheet">
+
+    <style>
+        body {
+            font-family: 'Roboto', sans-serif;
+            background: #f4f4f4;
+            color: #333;
+            line-height: 1.35;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 20px auto;
+            background: #fff;
+            padding: 40px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+            border-radius: 8px;
+        }
+
+        h3 {
+            font-family: 'BBH Bogle', sans-serif;
+            color: #000;
+            margin-bottom: 8px;
+            font-size: 1.6em;
+            border-bottom: 2px solid #000;
+            padding-bottom: 4px;
+        }
+
+        .logo-placeholder {
+            text-align: center;
+            margin-bottom: 25px;
+        }
+
+        .logo-placeholder img {
+            max-width: 220px;
+            height: auto;
+            display: block;
+            margin: 0 auto 10px;
+        }
+
+        .subtitle {
+            font-size: 0.8em;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            color: #555;
+        }
+
+        .grid-2 {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 18px;
+            margin-bottom: 12px;
+        }
+
+        .section {
+            margin-bottom: 22px;
+        }
+
+        .no-page-break {
+            page-break-inside: avoid;
+            break-inside: avoid;
+        }
+
+        label {
+            font-weight: bold;
+            font-size: 0.8em;
+            text-transform: uppercase;
+        }
+
+        input, textarea {
+            width: 100%;
+            padding: 8px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            background: #fafafa;
+            font-size: 0.95em;
+        }
+
+        textarea {
+            resize: none;
+            min-height: 150px;
+        }
+
+        .checkbox-group {
+            display: flex;
+            gap: 12px;
+            margin: 10px 0;
+        }
+
+        .checkbox-group input {
+            transform: scale(1.5);
+            accent-color: #000;
+            margin-top: 2px;
+        }
+
+        /* SECCIÓN III */
+        .section-legal h4 {
+            font-size: 0.85em;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin: 18px 0 6px;
+        }
+
+        .legal-box {
+            background: #f6f6f6;
+            border: 1px solid #e2e2e2;
+            border-radius: 6px;
+            padding: 14px;
+            font-size: 0.9em;
+            color: #555;
+            margin-bottom: 12px;
+        }
+
+        .check-row {
+            display: flex;
+            gap: 12px;
+            margin: 10px 0;
+        }
+
+        .check-row input {
+            transform: scale(1.5);
+            accent-color: #000;
+        }
+
+        button {
+            background: #000;
+            color: #fff;
+            border: none;
+            padding: 16px;
+            font-size: 1.1em;
+            width: 100%;
+            margin-top: 20px;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+        /* ================= IMPRESIÓN ================= */
+        @media print {
+            body { background: #fff; }
+
+            .container {
+                box-shadow: none;
+                margin: 0;
+                padding: 0;
+            }
+
+            /* Logo más pequeño */
+            .logo-placeholder {
+                margin-bottom: 15px;
+            }
+
+            .logo-placeholder img {
+                max-width: 130px;
+                margin-bottom: 5px;
+            }
+
+            /* FORZAR 2ª PÁGINA */
+            .page-break-before {
+                page-break-before: always;
+                break-before: page;
+            }
+
+            textarea {
+                min-height: 240px !important;
+                overflow: visible !important;
+            }
+
+            button {
+                display: none;
+            }
+
+            input, textarea {
+                background: #fff !important;
+                border: 1px solid #000;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+<div class="container">
+
+    <div class="logo-placeholder">
+        <img src="logo.png" alt="O Studio Logo">
+        <div class="subtitle">
+            Consentimiento Informado<br>
+            Tatuaje Artístico & Oncológico
+        </div>
+    </div>
+
+    <!-- PÁGINA 1 -->
+    <div class="section">
+        <h3>I. Datos de la Sesión</h3>
+
+        <div class="grid-2">
+            <div><label>Nombre</label><input type="text"></div>
+            <div><label>DNI / NIE</label><input type="text"></div>
+        </div>
+
+        <div class="grid-2">
+            <div><label>Fecha Nacimiento</label><input type="date"></div>
+            <div><label>Teléfono</label><input type="tel"></div>
+        </div>
+
+        <div class="grid-2">
+            <div><label>Tatuador/a</label><input type="text" value="Florencia Olivera" readonly></div>
+            <div><label>Fecha</label><input type="date" id="dateToday"></div>
+        </div>
+    </div>
+
+    <div class="section">
+        <h3>II. Detalles del Procedimiento</h3>
+
+        <div class="grid-2">
+            <div>
+                <label>Tipo de Tratamiento</label>
+                <div class="checkbox-group"><input type="radio" name="tipo"><label>Artístico</label></div>
+                <div class="checkbox-group"><input type="radio" name="tipo"><label>Oncológico</label></div>
+            </div>
+
+            <div>
+                <label>Zona a Tatuar</label>
+                <input type="text">
+                <label style="margin-top:8px;">Tintas</label>
+                <textarea>
+BIOTEK: SET 1 Nº Reg. AEMPS: 695-PE
+- Fair 2: EU02HL-26C06 (03.2030)
+- Romantic: EU03HP-26I08 (09.2030)
+- Tan 2: EU02GQ-25M21 (11.2029)
+- Ibiza: EU09FA-26L06 (10.2030)
+- Fair 1: EU02GQ-26C19 (03.2930)
+                </textarea>
+            </div>
+        </div>
+    </div>
+
+    <!-- PÁGINA 2 -->
+    <div class="section section-legal no-page-break page-break-before">
+        <h3>III. Salud y Consentimiento</h3>
+
+        <h4>Declaración de Salud</h4>
+        <div class="legal-box">
+            Confirmo NO presentar enfermedades dermatológicas activas, herpes, hongos,
+            hemofilia, embarazo, lactancia, ni marcapasos. No tengo alergias conocidas
+            ni he consumido alcohol/aspirina en las últimas 24h.
+        </div>
+
+        <div class="check-row"><input type="checkbox"><label>Declaro no presentar contraindicaciones.</label></div>
+
+        <h4>Riesgos y Cuidados</h4>
+        <div class="legal-box">
+            He sido informado de riesgos, complicaciones y cuidados posteriores.
+        </div>
+
+        <div class="check-row"><input type="checkbox"><label>Acepto riesgos y cuidados.</label></div>
+        <div class="check-row"><input type="checkbox"><label>Autorizo tratamiento de datos.</label></div>
+        <div class="check-row"><input type="checkbox"><label>Autorizo uso de fotografías.</label></div>
+
+        <h3 style="margin-top:25px;">IV. Aceptación</h3>
+        <p style="font-size:0.8em;color:#666;">Al firmar asumo la responsabilidad del tratamiento.</p>
+
+        <canvas id="firma" width="300" height="140" style="border:1px solid #000;"></canvas>
+    </div>
+
+    <button onclick="window.print()">GENERAR PDF PARA FIRMAR</button>
+</div>
+
+<script>
+    document.getElementById('dateToday').valueAsDate = new Date();
+</script>
+
+</body>
+</html>
