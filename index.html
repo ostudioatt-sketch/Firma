@@ -38,4 +38,239 @@ h3 {
 .grid-2 {
     display: grid;
     grid-template-columns: 1fr 1fr;
-    gap: 20p
+    gap: 20px;
+}
+
+label {
+    font-weight: bold;
+    font-size: 0.85em;
+    text-transform: uppercase;
+}
+
+input, textarea {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    background: #fafafa;
+}
+
+textarea {
+    resize: none;
+}
+
+.checkbox-group {
+    display: flex;
+    gap: 15px;
+    margin: 10px 0;
+}
+
+.legal-text {
+    background: #f9f9f9;
+    padding: 15px;
+    border: 1px solid #eee;
+    font-size: 0.85em;
+}
+
+button {
+    background: #000;
+    color: #fff;
+    padding: 18px;
+    width: 100%;
+    border: none;
+    margin-top: 20px;
+    font-size: 1.2em;
+    cursor: pointer;
+}
+
+/* ===== IMPRESIÓN ===== */
+@media print {
+
+    body { background: #fff; }
+
+    .container {
+        box-shadow: none;
+        margin: 0;
+        padding: 0;
+    }
+
+    /* Saltos de página controlados */
+    .page-break {
+        page-break-after: always;
+    }
+
+    /* Secciones 3 y 4 juntas */
+    .keep-together {
+        page-break-inside: avoid;
+        break-inside: avoid;
+    }
+
+    textarea {
+        height: auto !important;
+        overflow: visible !important;
+    }
+
+    .legal-text {
+        max-height: none;
+        overflow: visible;
+    }
+
+    button {
+        display: none;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<form id="consentForm">
+
+<div class="container">
+
+<!-- I -->
+<div class="section page-break">
+<h3>I. Datos de la Sesión</h3>
+
+<div class="grid-2">
+<div>
+<label>Nombre Cliente</label>
+<input type="text" required>
+</div>
+<div>
+<label>DNI / NIE</label>
+<input type="text" required>
+</div>
+</div>
+
+<div class="grid-2">
+<div>
+<label>Fecha Nacimiento</label>
+<input type="date" required>
+</div>
+<div>
+<label>Teléfono</label>
+<input type="tel" required>
+</div>
+</div>
+
+<div class="grid-2">
+<div>
+<label>Tatuador/a</label>
+<input type="text" value="Florencia Olivera" readonly>
+</div>
+<div>
+<label>Fecha</label>
+<input type="date" id="dateToday" required>
+</div>
+</div>
+</div>
+
+<!-- II -->
+<div class="section page-break">
+<h3>II. Detalles del Procedimiento</h3>
+
+<div class="grid-2">
+<div>
+<label>Tipo</label>
+<div class="checkbox-group">
+<input type="radio" name="tipo" required> Artístico
+</div>
+<div class="checkbox-group">
+<input type="radio" name="tipo"> Oncológico
+</div>
+</div>
+
+<div>
+<label>Zona a Tatuar</label>
+<input type="text" required>
+
+<label style="margin-top:10px;">Tintas (Marca / Lote / Caducidad)</label>
+<textarea rows="8" required>
+BIOTEK: SET 1 Nº Reg. AEMPS: 695-PE
+- Fair 2: Lot nº: EU02HL-26C06 (03.2030)
+- Romantic: Lot nº: EU03HP-26I08 (09.2030)
+- Tan 2: Lot nº: EU02GQ-25M21 (11.2029)
+- Ibiza: Lot nº: EU09FA-26L06 (10.2030)
+- Fair 1: Lot nº: EU02GQ-26C19 (03.2930)
+</textarea>
+</div>
+</div>
+</div>
+
+<!-- III + IV JUNTAS -->
+<div class="keep-together">
+
+<div class="section">
+<h3>III. Salud y Consentimiento</h3>
+
+<div class="legal-text">
+Declaro no presentar contraindicaciones médicas ni alergias relevantes.
+</div>
+
+<div class="checkbox-group">
+<input type="checkbox" required> Confirmo declaración de salud
+</div>
+
+<div class="checkbox-group">
+<input type="checkbox" required> Acepto riesgos y cuidados
+</div>
+</div>
+
+<div class="section">
+<h3>IV. Aceptación</h3>
+
+<p style="font-size:0.8em;">Firmando acepto el procedimiento.</p>
+
+<canvas id="firma" width="300" height="150"
+style="border:1px solid #000; touch-action:none;" required></canvas>
+
+<button type="button" onclick="limpiarFirma()">Limpiar firma</button>
+</div>
+
+</div>
+
+<button type="button" onclick="validarImpresion()">GENERAR PDF PARA FIRMAR</button>
+
+</div>
+</form>
+
+<script>
+document.getElementById('dateToday').valueAsDate = new Date();
+
+/* Validación antes de imprimir */
+function validarImpresion() {
+    const form = document.getElementById('consentForm');
+    if (!form.checkValidity()) {
+        alert("⚠️ Por favor, rellena todos los campos antes de generar el PDF.");
+        return;
+    }
+    window.print();
+}
+
+/* Firma */
+const canvas = document.getElementById('firma');
+const ctx = canvas.getContext('2d');
+let dibujando = false;
+
+canvas.addEventListener('pointerdown', e => {
+    dibujando = true;
+    ctx.beginPath();
+    ctx.moveTo(e.offsetX, e.offsetY);
+});
+
+canvas.addEventListener('pointermove', e => {
+    if (!dibujando) return;
+    ctx.lineTo(e.offsetX, e.offsetY);
+    ctx.stroke();
+});
+
+canvas.addEventListener('pointerup', () => dibujando = false);
+
+function limpiarFirma() {
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+}
+</script>
+
+</body>
+</html>
