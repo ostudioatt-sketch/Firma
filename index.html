@@ -64,6 +64,11 @@
             margin-bottom: 30px;
         }
 
+        .no-page-break {
+            page-break-inside: avoid;
+            break-inside: avoid;
+        }
+
         label {
             display: block;
             font-weight: bold;
@@ -162,14 +167,15 @@
                 padding: 0;
             }
 
+            /* Salto de página solo tras I y II */
             .section {
-                page-break-after: always;
-                break-after: page;
-            }
-
-            .section:last-of-type {
                 page-break-after: auto;
                 break-after: auto;
+            }
+
+            .page-break {
+                page-break-after: always;
+                break-after: page;
             }
 
             button {
@@ -203,7 +209,7 @@
     </div>
 
     <!-- I -->
-    <div class="section">
+    <div class="section page-break">
         <h3>I. Datos de la Sesión</h3>
 
         <p style="font-size:0.8em;color:#777;">
@@ -245,7 +251,7 @@
     </div>
 
     <!-- II -->
-    <div class="section">
+    <div class="section page-break">
         <h3>II. Detalles del Procedimiento</h3>
 
         <div class="grid-2">
@@ -281,7 +287,7 @@ BIOTEK: SET 1 Nº Reg. AEMPS: 695-PE
     </div>
 
     <!-- III -->
-    <div class="section">
+    <div class="section no-page-break">
         <h3>III. Salud y Consentimiento</h3>
 
         <label>Declaración de Salud</label>
@@ -308,7 +314,7 @@ BIOTEK: SET 1 Nº Reg. AEMPS: 695-PE
     </div>
 
     <!-- IV -->
-    <div class="section">
+    <div class="section no-page-break">
         <h3>IV. Aceptación</h3>
 
         <p style="font-size:0.8em;color:#666;">
