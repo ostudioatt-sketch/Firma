@@ -12,7 +12,7 @@
             font-family: 'Roboto', sans-serif;
             background: #f4f4f4;
             color: #333;
-            line-height: 1.35;
+            line-height: 1.4;
         }
 
         .container {
@@ -27,26 +27,27 @@
         h3 {
             font-family: 'BBH Bogle', sans-serif;
             color: #000;
-            margin-bottom: 8px;
-            font-size: 1.6em;
+            margin-bottom: 10px;
+            font-size: 1.8em;
             border-bottom: 2px solid #000;
-            padding-bottom: 4px;
+            padding-bottom: 5px;
         }
 
         .logo-placeholder {
             text-align: center;
-            margin-bottom: 25px;
+            margin-bottom: 30px;
         }
 
         .logo-placeholder img {
-            max-width: 220px;
+            max-width: 250px;
             height: auto;
             display: block;
-            margin: 0 auto 10px;
+            margin: 0 auto 15px auto;
         }
 
         .subtitle {
-            font-size: 0.8em;
+            text-align: center;
+            font-size: 0.85em;
             letter-spacing: 1px;
             text-transform: uppercase;
             color: #555;
@@ -55,12 +56,12 @@
         .grid-2 {
             display: grid;
             grid-template-columns: 1fr 1fr;
-            gap: 18px;
-            margin-bottom: 12px;
+            gap: 20px;
+            margin-bottom: 15px;
         }
 
         .section {
-            margin-bottom: 22px;
+            margin-bottom: 30px;
         }
 
         .no-page-break {
@@ -69,76 +70,105 @@
         }
 
         label {
+            display: block;
             font-weight: bold;
-            font-size: 0.8em;
+            margin-bottom: 5px;
+            font-size: 0.85em;
             text-transform: uppercase;
         }
 
-        input, textarea {
+        input[type="text"],
+        input[type="date"],
+        input[type="tel"],
+        textarea {
             width: 100%;
-            padding: 8px;
+            padding: 10px;
             border: 1px solid #ccc;
             border-radius: 4px;
+            box-sizing: border-box;
             background: #fafafa;
-            font-size: 0.95em;
+            font-size: 1em;
         }
 
         textarea {
             resize: none;
-            min-height: 150px;
+            min-height: 140px;
         }
 
         .checkbox-group {
+            margin: 12px 0;
             display: flex;
-            gap: 12px;
-            margin: 10px 0;
+            align-items: flex-start;
         }
 
         .checkbox-group input {
-            transform: scale(1.5);
+            margin-right: 15px;
+            transform: scale(1.6);
+            margin-top: 2px;
+            accent-color: #000;
+        }
+
+        .checkbox-group label {
+            text-transform: none;
+            font-weight: normal;
+            font-size: 1em;
+            line-height: 1.3;
+        }
+
+        /* ===== SECCIÓN III ESTILO IMAGEN ===== */
+        .section-legal h4 {
+            font-size: 0.9em;
+            font-weight: 700;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            margin: 25px 0 8px;
+            color: #111;
+        }
+
+        .section-legal .legal-box {
+            background: #f6f6f6;
+            border: 1px solid #e2e2e2;
+            border-radius: 6px;
+            padding: 18px;
+            font-size: 0.95em;
+            color: #555;
+            line-height: 1.5;
+            margin-bottom: 15px;
+        }
+
+        .section-legal .check-row {
+            display: flex;
+            align-items: flex-start;
+            gap: 15px;
+            margin: 14px 0;
+        }
+
+        .section-legal .check-row input {
+            transform: scale(1.6);
             accent-color: #000;
             margin-top: 2px;
         }
 
-        /* SECCIÓN III */
-        .section-legal h4 {
-            font-size: 0.85em;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            margin: 18px 0 6px;
-        }
-
-        .legal-box {
-            background: #f6f6f6;
-            border: 1px solid #e2e2e2;
-            border-radius: 6px;
-            padding: 14px;
-            font-size: 0.9em;
-            color: #555;
-            margin-bottom: 12px;
-        }
-
-        .check-row {
-            display: flex;
-            gap: 12px;
-            margin: 10px 0;
-        }
-
-        .check-row input {
-            transform: scale(1.5);
-            accent-color: #000;
+        .section-legal .check-row label {
+            font-size: 1em;
+            font-weight: 500;
+            text-transform: none;
+            line-height: 1.4;
         }
 
         button {
             background: #000;
             color: #fff;
             border: none;
-            padding: 16px;
-            font-size: 1.1em;
+            padding: 18px 30px;
+            font-size: 1.2em;
+            cursor: pointer;
+            display: block;
             width: 100%;
+            font-family: 'BBH Bogle', sans-serif;
+            letter-spacing: 2px;
             margin-top: 20px;
             border-radius: 4px;
-            cursor: pointer;
         }
 
         /* ================= IMPRESIÓN ================= */
@@ -151,30 +181,18 @@
                 padding: 0;
             }
 
-            /* Logo más pequeño */
-            .logo-placeholder {
-                margin-bottom: 15px;
-            }
-
-            .logo-placeholder img {
-                max-width: 130px;
-                margin-bottom: 5px;
-            }
-
-            /* FORZAR 2ª PÁGINA */
-            .page-break-before {
-                page-break-before: always;
-                break-before: page;
+            .page-break {
+                page-break-after: always;
+                break-after: page;
             }
 
             textarea {
-                min-height: 240px !important;
+                min-height: 260px !important;
+                height: auto !important;
                 overflow: visible !important;
             }
 
-            button {
-                display: none;
-            }
+            button { display: none; }
 
             input, textarea {
                 background: #fff !important;
@@ -196,78 +214,130 @@
         </div>
     </div>
 
-    <!-- PÁGINA 1 -->
-    <div class="section">
+    <!-- I -->
+    <div class="section page-break">
         <h3>I. Datos de la Sesión</h3>
 
         <div class="grid-2">
-            <div><label>Nombre</label><input type="text"></div>
-            <div><label>DNI / NIE</label><input type="text"></div>
+            <div>
+                <label>Nombre Cliente / Paciente</label>
+                <input type="text">
+            </div>
+            <div>
+                <label>DNI / NIE / Pasaporte</label>
+                <input type="text">
+            </div>
         </div>
 
         <div class="grid-2">
-            <div><label>Fecha Nacimiento</label><input type="date"></div>
-            <div><label>Teléfono</label><input type="tel"></div>
+            <div>
+                <label>Fecha de Nacimiento</label>
+                <input type="date">
+            </div>
+            <div>
+                <label>Teléfono</label>
+                <input type="tel">
+            </div>
         </div>
 
         <div class="grid-2">
-            <div><label>Tatuador/a</label><input type="text" value="Florencia Olivera" readonly></div>
-            <div><label>Fecha</label><input type="date" id="dateToday"></div>
+            <div>
+                <label>Tatuador/a</label>
+                <input type="text" value="Florencia Olivera" readonly style="background:#eee;">
+            </div>
+            <div>
+                <label>Fecha Actual</label>
+                <input type="date" id="dateToday">
+            </div>
         </div>
     </div>
 
-    <div class="section">
+    <!-- II -->
+    <div class="section page-break">
         <h3>II. Detalles del Procedimiento</h3>
 
         <div class="grid-2">
             <div>
                 <label>Tipo de Tratamiento</label>
-                <div class="checkbox-group"><input type="radio" name="tipo"><label>Artístico</label></div>
-                <div class="checkbox-group"><input type="radio" name="tipo"><label>Oncológico</label></div>
+                <div class="checkbox-group">
+                    <input type="radio" name="tipo">
+                    <label>Tatuaje Artístico / Estético</label>
+                </div>
+                <div class="checkbox-group">
+                    <input type="radio" name="tipo">
+                    <label>Tatuaje Oncológico / Reconstructivo</label>
+                </div>
             </div>
 
             <div>
                 <label>Zona a Tatuar</label>
                 <input type="text">
-                <label style="margin-top:8px;">Tintas</label>
+
+                <label style="margin-top:10px;">Tintas (Marca / Lote / Caducidad)</label>
                 <textarea>
 BIOTEK: SET 1 Nº Reg. AEMPS: 695-PE
-- Fair 2: EU02HL-26C06 (03.2030)
-- Romantic: EU03HP-26I08 (09.2030)
-- Tan 2: EU02GQ-25M21 (11.2029)
-- Ibiza: EU09FA-26L06 (10.2030)
-- Fair 1: EU02GQ-26C19 (03.2930)
+- Fair 2: Lot nº: EU02HL-26C06 (03.2030)
+- Romantic: Lot nº: EU03HP-26I08 (09.2030)
+- Tan 2: Lot nº: EU02GQ-25M21 (11.2029)
+- Ibiza: Lot nº: EU09FA-26L06 (10.2030)
+- Fair 1: Lot nº: EU02GQ-26C19 (03.2930)
                 </textarea>
             </div>
         </div>
     </div>
 
-    <!-- PÁGINA 2 -->
-    <div class="section section-legal no-page-break page-break-before">
+    <!-- III -->
+    <div class="section section-legal no-page-break">
         <h3>III. Salud y Consentimiento</h3>
 
         <h4>Declaración de Salud</h4>
         <div class="legal-box">
-            Confirmo NO presentar enfermedades dermatológicas activas, herpes, hongos,
-            hemofilia, embarazo, lactancia, ni marcapasos. No tengo alergias conocidas
-            ni he consumido alcohol/aspirina en las últimas 24h.
+            Confirmo NO presentar: Enfermedades dermatológicas activas, herpes, hongos,
+            hemofilia, embarazo, lactancia, ni llevar marcapasos. No tengo alergias
+            conocidas a pigmentos o metales. No he consumido alcohol/aspirina en las
+            últimas 24h.
         </div>
 
-        <div class="check-row"><input type="checkbox"><label>Declaro no presentar contraindicaciones.</label></div>
+        <div class="check-row">
+            <input type="checkbox">
+            <label>Declaro no presentar ninguna de las contraindicaciones mencionadas.</label>
+        </div>
 
         <h4>Riesgos y Cuidados</h4>
         <div class="legal-box">
-            He sido informado de riesgos, complicaciones y cuidados posteriores.
+            He sido informado de los riesgos (infecciones, alergias, granulomas,
+            dificultad de eliminación) y de los cuidados posteriores (tiempo de
+            cicatrización, higiene, protección solar).
         </div>
 
-        <div class="check-row"><input type="checkbox"><label>Acepto riesgos y cuidados.</label></div>
-        <div class="check-row"><input type="checkbox"><label>Autorizo tratamiento de datos.</label></div>
-        <div class="check-row"><input type="checkbox"><label>Autorizo uso de fotografías.</label></div>
+        <div class="check-row">
+            <input type="checkbox">
+            <label>He sido informado/a de la técnica, riesgos, cuidados y complicaciones.</label>
+        </div>
 
-        <h3 style="margin-top:25px;">IV. Aceptación</h3>
-        <p style="font-size:0.8em;color:#666;">Al firmar asumo la responsabilidad del tratamiento.</p>
+        <div class="check-row">
+            <input type="checkbox">
+            <label>Autorizo el tratamiento de mis datos (Decreto 43/2003 - Illes Balears).</label>
+        </div>
 
-        <canvas id="firma" width="300" height="140" style="border:1px solid #000;"></canvas>
+        <div class="check-row">
+            <input type="checkbox">
+            <label>Autorizo el uso de fotografías de mi tatuaje para portafolio/redes sociales.</label>
+        </div>
+    </div>
+
+    <!-- IV -->
+    <div class="section no-page-break">
+        <h3>IV. Aceptación</h3>
+
+        <p style="font-size:0.8em;color:#666;">
+            Al firmar asumo la responsabilidad del tratamiento.
+        </p>
+
+        <canvas id="firma" width="300" height="150"
+            style="border:1px solid #000; touch-action:none;"></canvas>
+
+        <button onclick="limpiarFirma()">Limpiar firma</button>
     </div>
 
     <button onclick="window.print()">GENERAR PDF PARA FIRMAR</button>
@@ -275,7 +345,33 @@ BIOTEK: SET 1 Nº Reg. AEMPS: 695-PE
 
 <script>
     document.getElementById('dateToday').valueAsDate = new Date();
+
+    const canvas = document.getElementById('firma');
+    const ctx = canvas.getContext('2d');
+    ctx.lineWidth = 2;
+    ctx.lineCap = 'round';
+
+    let dibujando = false;
+
+    canvas.addEventListener('pointerdown', e => {
+        dibujando = true;
+        ctx.beginPath();
+        ctx.moveTo(e.offsetX, e.offsetY);
+    });
+
+    canvas.addEventListener('pointermove', e => {
+        if (!dibujando) return;
+        ctx.lineTo(e.offsetX, e.offsetY);
+        ctx.stroke();
+    });
+
+    canvas.addEventListener('pointerup', () => dibujando = false);
+
+    function limpiarFirma() {
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+    }
 </script>
 
 </body>
 </html>
+
