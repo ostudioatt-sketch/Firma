@@ -79,7 +79,6 @@
 
         input[type="text"],
         input[type="date"],
-        input[type="email"],
         input[type="tel"],
         textarea {
             width: 100%;
@@ -93,13 +92,13 @@
 
         textarea {
             resize: none;
+            min-height: 140px;
         }
 
         .checkbox-group {
             margin: 12px 0;
             display: flex;
             align-items: flex-start;
-            cursor: pointer;
         }
 
         .checkbox-group input {
@@ -107,11 +106,9 @@
             transform: scale(1.6);
             margin-top: 2px;
             accent-color: #000;
-            cursor: pointer;
         }
 
         .checkbox-group label {
-            cursor: pointer;
             text-transform: none;
             font-weight: normal;
             font-size: 1em;
@@ -146,17 +143,9 @@
             border-radius: 4px;
         }
 
-        @media (max-width: 600px) {
-            .grid-2 {
-                grid-template-columns: 1fr;
-            }
-            .container {
-                padding: 20px;
-            }
-        }
-
         /* ================= IMPRESIÓN ================= */
         @media print {
+
             body {
                 background: #fff;
             }
@@ -167,30 +156,30 @@
                 padding: 0;
             }
 
-            /* Salto de página solo tras I y II */
-            .section {
-                page-break-after: auto;
-                break-after: auto;
-            }
-
             .page-break {
                 page-break-after: always;
                 break-after: page;
+            }
+
+            textarea {
+                min-height: 260px !important;   /* 👈 MÁS GRANDE EN IMPRESIÓN */
+                height: auto !important;
+                overflow: visible !important;
+            }
+
+            .legal-text {
+                max-height: none;
+                overflow: visible;
             }
 
             button {
                 display: none;
             }
 
-            textarea,
-            input {
+            input,
+            textarea {
                 background: #fff !important;
                 border: 1px solid #000;
-            }
-
-            .legal-text {
-                max-height: none;
-                overflow: visible;
             }
         }
     </style>
@@ -211,10 +200,6 @@
     <!-- I -->
     <div class="section page-break">
         <h3>I. Datos de la Sesión</h3>
-
-        <p style="font-size:0.8em;color:#777;">
-            Establecimiento: O STUDIO | Aplicador Autorizado.
-        </p>
 
         <div class="grid-2">
             <div>
@@ -274,7 +259,7 @@
                 <input type="text">
 
                 <label style="margin-top:10px;">Tintas (Marca / Lote / Caducidad)</label>
-                <textarea rows="12">
+                <textarea>
 BIOTEK: SET 1 Nº Reg. AEMPS: 695-PE
 - Fair 2: Lot nº: EU02HL-26C06 (03.2030)
 - Romantic: Lot nº: EU03HP-26I08 (09.2030)
@@ -290,7 +275,6 @@ BIOTEK: SET 1 Nº Reg. AEMPS: 695-PE
     <div class="section no-page-break">
         <h3>III. Salud y Consentimiento</h3>
 
-        <label>Declaración de Salud</label>
         <div class="legal-text">
             Confirmo NO presentar enfermedades dermatológicas activas, herpes, hongos,
             hemofilia, embarazo, lactancia, ni marcapasos. No tengo alergias conocidas
@@ -300,11 +284,6 @@ BIOTEK: SET 1 Nº Reg. AEMPS: 695-PE
         <div class="checkbox-group">
             <input type="checkbox">
             <label>Declaro no presentar ninguna de las contraindicaciones.</label>
-        </div>
-
-        <label>Riesgos y Cuidados</label>
-        <div class="legal-text">
-            He sido informado/a de riesgos, posibles complicaciones y cuidados posteriores.
         </div>
 
         <div class="checkbox-group">
@@ -328,6 +307,7 @@ BIOTEK: SET 1 Nº Reg. AEMPS: 695-PE
     </div>
 
     <button onclick="window.print()">GENERAR PDF PARA FIRMAR</button>
+
 </div>
 
 <script>
@@ -361,5 +341,3 @@ BIOTEK: SET 1 Nº Reg. AEMPS: 695-PE
 
 </body>
 </html>
-
-
