@@ -115,17 +115,45 @@
             line-height: 1.3;
         }
 
-        .legal-text {
-            font-size: 0.85em;
+        /* ===== SECCIÓN III ESTILO IMAGEN ===== */
+        .section-legal h4 {
+            font-size: 0.9em;
+            font-weight: 700;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            margin: 25px 0 8px;
+            color: #111;
+        }
+
+        .section-legal .legal-box {
+            background: #f6f6f6;
+            border: 1px solid #e2e2e2;
+            border-radius: 6px;
+            padding: 18px;
+            font-size: 0.95em;
             color: #555;
-            background: #f9f9f9;
-            padding: 15px;
-            border: 1px solid #eee;
-            border-radius: 4px;
+            line-height: 1.5;
             margin-bottom: 15px;
-            text-align: justify;
-            max-height: 150px;
-            overflow-y: scroll;
+        }
+
+        .section-legal .check-row {
+            display: flex;
+            align-items: flex-start;
+            gap: 15px;
+            margin: 14px 0;
+        }
+
+        .section-legal .check-row input {
+            transform: scale(1.6);
+            accent-color: #000;
+            margin-top: 2px;
+        }
+
+        .section-legal .check-row label {
+            font-size: 1em;
+            font-weight: 500;
+            text-transform: none;
+            line-height: 1.4;
         }
 
         button {
@@ -145,10 +173,7 @@
 
         /* ================= IMPRESIÓN ================= */
         @media print {
-
-            body {
-                background: #fff;
-            }
+            body { background: #fff; }
 
             .container {
                 box-shadow: none;
@@ -162,22 +187,14 @@
             }
 
             textarea {
-                min-height: 260px !important;   /* 👈 MÁS GRANDE EN IMPRESIÓN */
+                min-height: 260px !important;
                 height: auto !important;
                 overflow: visible !important;
             }
 
-            .legal-text {
-                max-height: none;
-                overflow: visible;
-            }
+            button { display: none; }
 
-            button {
-                display: none;
-            }
-
-            input,
-            textarea {
+            input, textarea {
                 background: #fff !important;
                 border: 1px solid #000;
             }
@@ -242,12 +259,10 @@
         <div class="grid-2">
             <div>
                 <label>Tipo de Tratamiento</label>
-
                 <div class="checkbox-group">
                     <input type="radio" name="tipo">
                     <label>Tatuaje Artístico / Estético</label>
                 </div>
-
                 <div class="checkbox-group">
                     <input type="radio" name="tipo">
                     <label>Tatuaje Oncológico / Reconstructivo</label>
@@ -272,35 +287,42 @@ BIOTEK: SET 1 Nº Reg. AEMPS: 695-PE
     </div>
 
     <!-- III -->
-    <div class="section no-page-break">
+    <div class="section section-legal no-page-break">
         <h3>III. Salud y Consentimiento</h3>
 
-        <div class="legal-text">
-            Confirmo NO presentar enfermedades dermatológicas activas, herpes, hongos,
-            hemofilia, embarazo, lactancia, ni marcapasos. No tengo alergias conocidas
-            ni he consumido alcohol o aspirina en las últimas 24h.
+        <h4>Declaración de Salud</h4>
+        <div class="legal-box">
+            Confirmo NO presentar: Enfermedades dermatológicas activas, herpes, hongos,
+            hemofilia, embarazo, lactancia, ni llevar marcapasos. No tengo alergias
+            conocidas a pigmentos o metales. No he consumido alcohol/aspirina en las
+            últimas 24h.
         </div>
 
-        <div class="checkbox-group">
+        <div class="check-row">
             <input type="checkbox">
-            <label>Declaro no presentar ninguna de las contraindicaciones.</label>
+            <label>Declaro no presentar ninguna de las contraindicaciones mencionadas.</label>
         </div>
 
-        <div class="checkbox-group">
-            <input type="checkbox">
-            <label>He sido informado de los riesgos (infecciones, alergias, granulomas, diPcultad de
-eliminación) y de los cuidados posteriores (tiempo de cicatrización, higiene,
-protección solar).</label>
+        <h4>Riesgos y Cuidados</h4>
+        <div class="legal-box">
+            He sido informado de los riesgos (infecciones, alergias, granulomas,
+            dificultad de eliminación) y de los cuidados posteriores (tiempo de
+            cicatrización, higiene, protección solar).
         </div>
-           <input type="checkbox">
+
+        <div class="check-row">
+            <input type="checkbox">
             <label>He sido informado/a de la técnica, riesgos, cuidados y complicaciones.</label>
         </div>
-       <input type="checkbox">
+
+        <div class="check-row">
+            <input type="checkbox">
             <label>Autorizo el tratamiento de mis datos (Decreto 43/2003 - Illes Balears).</label>
         </div>
-       <input type="checkbox">
-            <label>Autorizo el uso de fotografías de mi tatuaje para portafolio/redes
-sociales.</label>
+
+        <div class="check-row">
+            <input type="checkbox">
+            <label>Autorizo el uso de fotografías de mi tatuaje para portafolio/redes sociales.</label>
         </div>
     </div>
 
@@ -319,7 +341,6 @@ sociales.</label>
     </div>
 
     <button onclick="window.print()">GENERAR PDF PARA FIRMAR</button>
-
 </div>
 
 <script>
@@ -353,4 +374,3 @@ sociales.</label>
 
 </body>
 </html>
-
