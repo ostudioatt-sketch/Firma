@@ -216,7 +216,7 @@
 
     <!-- I -->
     <div class="section page-break">
-        <h3>I. Datos de la Sesiónye</h3>
+        <h3>I. Datos de la Sesión</h3>
 
         <div class="grid-2">
             <div>
@@ -287,42 +287,45 @@ BIOTEK: SET 1 Nº Reg. AEMPS: 695-PE
     </div>
 
     <!-- III -->
-    <div class="section section-legal no-page-break">
+        <div class="section">
         <h3>III. Salud y Consentimiento</h3>
-
-        <h4>Declaración de Salud</h4>
-        <div class="legal-box">
-            Confirmo NO presentar: Enfermedades dermatológicas activas, herpes, hongos,
-            hemofilia, embarazo, lactancia, ni llevar marcapasos. No tengo alergias
-            conocidas a pigmentos o metales. No he consumido alcohol/aspirina en las
-            últimas 24h.
+        
+        <label>Declaración de Salud</label>
+        <div class="legal-text">
+            Confirmo NO presentar: Enfermedades dermatológicas activas, herpes, hongos, hemofilia, embarazo, lactancia, ni llevar marcapasos. No tengo alergias conocidas a pigmentos o metales. No he consumido alcohol/aspirina en las últimas 24h.
         </div>
 
-        <div class="check-row">
-            <input type="checkbox">
-            <label>Declaro no presentar ninguna de las contraindicaciones mencionadas.</label>
+        <div class="checkbox-group">
+            <input type="radio" name="salud_status" id="check_salud_no">
+            <label for="check_salud_no">Declaro NO presentar ninguna de las contraindicaciones mencionadas.</label>
         </div>
 
-        <h4>Riesgos y Cuidados</h4>
-        <div class="legal-box">
-            He sido informado de los riesgos (infecciones, alergias, granulomas,
-            dificultad de eliminación) y de los cuidados posteriores (tiempo de
-            cicatrización, higiene, protección solar).
+        <div style="display: flex; align-items: center; gap: 15px; margin-top: 10px;">
+            <div class="checkbox-group" style="margin: 0; flex-shrink: 0;">
+                <input type="radio" name="salud_status" id="check_salud_si">
+                <label for="check_salud_si">SÍ presento las siguientes condiciones:</label>
+            </div>
+            <input type="text" placeholder="Especifique aquí (ej. alergias, medicación...)" style="flex-grow: 1; margin-bottom: 0;">
         </div>
 
-        <div class="check-row">
-            <input type="checkbox">
-            <label>He sido informado/a de la técnica, riesgos, cuidados y complicaciones.</label>
+        <br>
+        <label>Riesgos y Cuidados</label>
+        <div class="legal-text">
+            He sido informado de los riesgos (infecciones, alergias, granulomas, dificultad de eliminación) y de los cuidados posteriores (tiempo de cicatrización, higiene, protección solar).
+        </div>
+        <div class="checkbox-group">
+            <input type="checkbox" id="check_riesgos">
+            <label for="check_riesgos">He sido informado/a de la técnica, riesgos, cuidados y complicaciones.</label>
         </div>
 
-        <div class="check-row">
-            <input type="checkbox">
-            <label>Autorizo el tratamiento de mis datos (Decreto 43/2003 - Illes Balears).</label>
+        <div class="checkbox-group">
+            <input type="checkbox" id="check_datos">
+            <label for="check_datos">Autorizo el tratamiento de mis datos (Decreto 43/2003 - Illes Balears).</label>
         </div>
-
-        <div class="check-row">
-            <input type="checkbox">
-            <label>Autorizo el uso de fotografías de mi tatuaje para portafolio/redes sociales.</label>
+        
+        <div class="checkbox-group">
+            <input type="checkbox" id="check_fotos">
+            <label for="check_fotos">Autorizo el uso de fotografías de mi tatuaje para portafolio/redes sociales.</label>
         </div>
     </div>
 
