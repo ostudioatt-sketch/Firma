@@ -119,19 +119,29 @@
         </div>
     </div>
 
-    <div class="section">
+        <div class="section">
         <h3>III. Salud y Consentimiento</h3>
         
         <label>Declaración de Salud</label>
         <div class="legal-text">
             Confirmo NO presentar: Enfermedades dermatológicas activas, herpes, hongos, hemofilia, embarazo, lactancia, ni llevar marcapasos. No tengo alergias conocidas a pigmentos o metales. No he consumido alcohol/aspirina en las últimas 24h.
         </div>
+
         <div class="checkbox-group">
-            <input type="checkbox" id="check_salud">
-            <label for="check_salud">Declaro no presentar ninguna de las contraindicaciones mencionadas.</label>
+            <input type="radio" name="salud_status" id="check_salud_no">
+            <label for="check_salud_no">Declaro NO presentar ninguna de las contraindicaciones mencionadas.</label>
         </div>
 
-        <label style="margin-top:15px;">Riesgos y Cuidados</label>
+        <div style="display: flex; align-items: center; gap: 15px; margin-top: 10px;">
+            <div class="checkbox-group" style="margin: 0; flex-shrink: 0;">
+                <input type="radio" name="salud_status" id="check_salud_si">
+                <label for="check_salud_si">SÍ presento las siguientes condiciones:</label>
+            </div>
+            <input type="text" placeholder="Especifique aquí (ej. alergias, medicación...)" style="flex-grow: 1; margin-bottom: 0;">
+        </div>
+
+        <br>
+        <label>Riesgos y Cuidados</label>
         <div class="legal-text">
             He sido informado de los riesgos (infecciones, alergias, granulomas, dificultad de eliminación) y de los cuidados posteriores (tiempo de cicatrización, higiene, protección solar).
         </div>
@@ -150,6 +160,7 @@
             <label for="check_fotos">Autorizo el uso de fotografías de mi tatuaje para portafolio/redes sociales.</label>
         </div>
     </div>
+
 
     <div class="section">
         <h3>IV. Aceptación</h3>
